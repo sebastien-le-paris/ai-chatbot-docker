@@ -57,9 +57,9 @@ $ docker logs -f fastapi
 
 Install virtual environment and dependencies
 
-lavie@DESKTOP-J6P4VKT fastapi % python3.12 -m venv .venv
-lavie@DESKTOP-J6P4VKT fastapi % source .venv/bin/activate
-(.venv) lavie@DESKTOP-J6P4VKT fastapi % pip install -r requirements.txt     
+$ python3.12 -m venv .venv
+$ source .venv/bin/activate
+(.venv) $ pip install -r requirements.txt     
 
 Run the FastAPI server
 uvicorn main:app --reload

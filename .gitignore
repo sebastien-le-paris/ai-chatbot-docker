@@ -130,7 +130,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-README.md
+README-local.md
 fastapi/.venv
 .env
 .venv
