@@ -1,0 +1,19 @@
+# Ignore the node_modules directory
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+tmp/
+temp/
+
+# Ignore the .env file
+.env
+fastapi/.venv/
+
+# Ignore all .DS_Store files (macOS)
+.DS_Store
+
+# Ignore the build directory
+build/
