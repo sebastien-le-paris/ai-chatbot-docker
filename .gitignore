@@ -70,6 +70,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs
 
 # PyBuilder
 .pybuilder/
@@ -128,6 +129,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+fastapi/.venv
 .env
 .venv
 env/
