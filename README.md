@@ -66,6 +66,14 @@ uvicorn main:app --reload
 
 Open the browser and navigate to http://127.0.0.1:8000/docs
 
+### Github 
+
+How to commit and push the changes to the github
+
+git status
+git add .
+git commit -m "Updated chat function to format input for llm.invoke"
+git push origin main  # or your branch name
 
 
 
