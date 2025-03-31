@@ -59,13 +59,24 @@ $ docker compose up -d --build
 
 Check the logs of the ollama container
 ```
-$ docker logs -f ollama-server
+$ docker logs -f ollama-container
 ```
 
 Check the logs of the fastapi container
 ```
-$ docker logs -f fastapi
+$ docker volume create ollama-models
 ```
+
+Remove volume
+```
+$ docker volume rm ollama-models
+``` 
+
+Stop volume
+```
+$ docker compose down -v
+``` 
+
 
 ### FastAPI
 
