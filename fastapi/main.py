@@ -42,7 +42,7 @@ def chat(request: ChatRequest):
     return {"response": response}
 
 @app.post("/chat")
-def chat(request: ChatRequest, session: session_dependency):    
+def chat(request: ChatRequest, session: Session = Depends(session_dependency)):    
     # Create the input string using the prompt template
     input_string = prompt.format(context=request.context, question=request.message)
     

@@ -222,3 +222,26 @@ ui/
 ├── package.json
 └── ...
 ```
+
+### How to run the project
+
+1. Start the Docker containers:
+   ```
+   docker compose up -d
+   ```
+
+2. Start the FastAPI server:
+   ```
+   cd fastapi
+   source .venv/bin/activate
+   uvicorn main:app --reload
+   ```
+
+3. Start the Next.js server:
+  ```
+   cd frontend-app
+   npm run dev
+   ```
+
+4. Open your web browser and navigate to [http://localhost:3000](http://localhost:3000) to access the chatbot.
+
