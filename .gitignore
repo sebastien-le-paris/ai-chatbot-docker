@@ -8,7 +8,26 @@ fastapi/app/__pycache__
 ollama/model
 
 # chatbot-ui
-ui/node_modules
+frontend-app/node_modules
+frontend-app/.next
+frontend-app/out
+frontend-app/build
+frontend-app/.DS_Store
+frontend-app/*.pem
+frontend-app/public/
+frontend-app/.env
+frontend-app/package-lock.json
+frontend-app/yarn.lock
+frontend-app/tsconfig.json
+frontend-app/tsconfig.node.json
+frontend-app/tsconfig.app.json
+frontend-app/tsconfig.json
+frontend-app/components/
+frontend-app/pages/
+frontend-app/styles/
+frontend-app/utils/
+frontend-app/types/
+frontend-app/lib/
 
 
 # Byte-compiled / optimized / DLL files
