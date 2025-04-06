@@ -127,19 +127,16 @@ To set up a new UI project using Next.js, Tailwind CSS, and Shadcn/UI, follow th
 
 1. Create a new Next.js project:
    ```
-   npx create-next-app@latest ui
+   cd frontend-app
+   npx create-next-app@latest .
    ```
 
 2. Navigate to the project directory:
    ```
-   cd ui
+   cd frontend-app
    ```
 
 3. Install Tailwind CSS, shadcn/ui and its dependencies:
-   ```
-   npm install -D tailwindcss shadcn/ui
-   ```
-
 Initialize shadcn/ui:
 https://ui.shadcn.com/docs/components/accordion
    ```
@@ -148,27 +145,7 @@ https://ui.shadcn.com/docs/components/accordion
 
 Add the components you need to the `components` folder.
    ```
-   npx shadcn@latest add button
-   ```
-
-Add component input to the `components` folder.
-   ```
-   npx shadcn@latest add input
-   ```
-
-Add component scroll area to the `components` folder.
-   ```
-   npx shadcn@latest add scroll-area
-   ```
-
-Add component textarea to the `components` folder.
-   ```
-   npx shadcn@latest add textarea
-   ```  
-
-Add component card to the `components` folder.
-   ```
-   npx shadcn@latest add card
+   npx shadcn@latest add button input scroll-area textarea card
    ```
 
 4. Initialize Tailwind CSS:
@@ -191,6 +168,17 @@ Add component card to the `components` folder.
      ```
      npx tailwindcss init
      ```
+     
+Check for Global Installation Conflicts:
+If you have a global installation of Tailwind CSS, it might conflict with the local installation. You can check for global installations with:
+```
+npm list -g --depth=0
+```
+
+If you find a global installation, you can remove it with:
+```
+npm uninstall -g tailwindcss
+```
 
 4. Configure Tailwind CSS by updating the `tailwind.config.js` file to include the paths to your template files.
 
@@ -230,12 +218,23 @@ ui/
    docker compose up -d
    ```
 
+Check the Docker containers are running:
+```
+docker ps -a
+```
+
 2. Start the FastAPI server:
    ```
    cd fastapi
    source .venv/bin/activate
    uvicorn main:app --reload
    ```
+
+Check the FastAPI server is running:
+```
+curl http://127.0.0.1:8000/docs
+```
+
 
 3. Start the Next.js server:
   ```
@@ -245,3 +244,7 @@ ui/
 
 4. Open your web browser and navigate to [http://localhost:3000](http://localhost:3000) to access the chatbot.
 
+Check the Next.js server is running:
+```
+curl http://localhost:3000
+```
