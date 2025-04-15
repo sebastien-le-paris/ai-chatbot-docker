@@ -26,7 +26,6 @@ front-ui/pages/
 front-ui/styles/
 front-ui/utils/
 front-ui/types/
-front-ui/lib/
 front-ui/components.json
 front-ui/next.config.js
 front-ui/postcss.config.js

@@ -20,3 +20,8 @@ def get_embeddings():
 
 def get_llm():
     return OllamaLLM(model="qwen2.5-coder:0.5b")
+
+from sqlmodel import SQLModel
+
+def get_sql_from_answer_llm(answer: str):
+    return answer.split("```sql")[1].split("```")[0].strip()

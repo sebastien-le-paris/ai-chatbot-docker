@@ -1,25 +1,42 @@
-services:
-  ollama:
-    build:
-      context: ./ollama  # Use the current directory as the build context
-      dockerfile: Dockerfile  # Specify the Dockerfile to use
-    image: ollama-server  # Name the image as 'ollama-server'
-    container_name: ollama-container  # Set a custom container name
-    ports:
-      - "11434:11434"  # Map port 11434 on the host to port 11434 in the container
-    volumes:
-      - ./ollama/pull-qwen-coder.sh:/pull-qwen-coder.sh  # Mount the script into the container
-      - ollama-models:/models  # Use a named volume to persist the downloaded models
-    environment:
-      - MODEL_NAME=qwen2.5-coder:0.5b  # Pass the model name as an environment variable        
-      - MODEL_PATH=/models  # Set the path for the model storage
-    networks:
-      - ollama-network  # Connect to the custom network
+version: '3.8'
 
-networks:
-  ollama-network:  # Define a custom network
-    driver: bridge  # Use the default bridge driver
+services:
+  fastapi:
+    build:
+      context: ./fastapi
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./fastapi:/app
+      - ./db.sqlite:/app/db.sqlite
+    environment:
+      - OLLAMA_BASE_URL=http://ollama-server:11434
+      - MODEL_NAME=qwen2.5-coder:0.5b
+    depends_on:
+      - ollama-server
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  ollama-server:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
 
 volumes:
-  ollama-models:  # Define a named volume for ollama models
-    name: ollama-models  # Set the name of the volume
+  ollama-data:

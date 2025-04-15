@@ -18,7 +18,7 @@ const RenderPage = () => {
             </ShowChat>
             <InputChat 
                 currentMessage={messages}
-                onChange={setMessages}
+                onChangeMessage={setMessages}
             />
         </main>
     );

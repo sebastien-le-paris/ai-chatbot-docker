@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import chatAction from '@/lib/actions/chat-action';
 
 interface InputChatProps {
     currentMessage: string;
-    onChange: (e: string[]) => void;
+    onChangeMessage: (e: string[]) => void;
 }
 
-const InputChat = ({ currentMessage, onChange }: InputChatProps) => {
+const InputChat = ({ currentMessage, onChangeMessage }: InputChatProps) => {
     const [value, setValue] = useState<string>('');
     return (
         <section className="container mx-auto flex gap-2 my-2">
@@ -21,7 +22,11 @@ const InputChat = ({ currentMessage, onChange }: InputChatProps) => {
                 }}
             />
             <Button onClick={() => {
-                onChange([...currentMessage, value]);
+                onChangeMessage([...currentMessage, value]);
+                chatAction({ 
+                    prompt: value, 
+                    // context: currentMessage.join('\n') 
+                });
                 setValue('');
             }}>
                 Send
